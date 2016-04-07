@@ -87,7 +87,7 @@ private:
 		std::copy(msg.begin(), msg.end(), write_buff_);
 		auto handler = boost::bind(&talk_to_server::on_write, shared_from_this(), _1, _2);
 		socket_.async_write_some(boost::asio::buffer(write_buff_, msg.size()), handler);
-	}
+	} 
 
 	void on_write(const error_code& ec, size_t bytes) {
 		do_read();
