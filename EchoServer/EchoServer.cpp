@@ -2,9 +2,16 @@
 //
 
 #include "stdafx.h"
+
+#ifdef _DEBUG
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_system-vc140-mt-gd-1_59.lib")
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_date_time-vc140-mt-gd-1_59.lib")
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_regex-vc140-mt-gd-1_59.lib")
+#else
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_system-vc140-mt-1_59.lib")
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_date_time-vc140-mt-1_59.lib")
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_regex-vc140-mt-1_59.lib")
+#endif // _DEBUG
 
 #include <boost/bind.hpp>
 #include <boost/noncopyable.hpp>
@@ -67,6 +74,16 @@ private:
 		auto handler2 = boost::bind(&talk_to_client::on_read, shared_from_this(), _1, _2);
 		*/
 		//auto handler1 = boost::bind(read_complete, boost::)
+
+
+		/*boost::asio::async_read(socket_, boost::asio::buffer(read_buff_), 
+								boost::bind(&talk_to_client::read_complete, 
+											shared_from_this(),
+											_1, _2), 
+								boost::bind(&talk_to_client::on_read,
+											shared_from_this(), 
+											_1, _2));*/
+		
 		boost::asio::async_read(socket_, boost::asio::buffer(read_buff_), 
 								boost::bind(&talk_to_client::read_complete, 
 											shared_from_this(),

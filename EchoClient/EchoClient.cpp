@@ -3,9 +3,15 @@
 
 #include "stdafx.h"
 
+#ifdef _DEBUG
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_system-vc140-mt-gd-1_59.lib")
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_date_time-vc140-mt-gd-1_59.lib")
 #pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_regex-vc140-mt-gd-1_59.lib")
+#else
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_system-vc140-mt-1_59.lib")
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_date_time-vc140-mt-1_59.lib")
+#pragma comment(lib, "C:/dev_libs/boost_1_59_0/stage/lib/libboost_regex-vc140-mt-1_59.lib")
+#endif // _DEBUG
 
 #include <boost/bind.hpp>
 #include <boost/noncopyable.hpp>
